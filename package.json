@@ -3,9 +3,27 @@
   "description": "Optional object chaining with ES6 Proxys",
   "homepage": "https://github.com/kirjavascript/qbject",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/Qbject.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:kirjavascript/qbject.git"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
+    "rimraf": "^2.6.2",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.9.0",
+    "typescript": "^2.7.2"
+  },
+  "scripts": {
+    "build": "rimraf dist; tsc -m umd",
+    "prepublish": "npm run test; npm run build",
+    "mocha": "mocha --require ts-node/register test.ts",
+    "test": "npm run mocha -- --exit",
+    "test:watch": "npm run mocha -- --watch-extensions ts --watch"
   }
 }
